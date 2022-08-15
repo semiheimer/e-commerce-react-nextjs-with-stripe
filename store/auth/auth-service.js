@@ -1,16 +1,16 @@
-import axios from "axios";
-const token = process.env.NEXT_PUBLIC_FIRABASE_TOKEN;
-const register_API_URL = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${token}`;
-const login_API_URL = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${token}`;
+import axios from 'axios';
+const apiToken = process.env.NEXT_PUBLIC_FIRABASE_TOKEN;
+const register_API_URL = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${apiToken}`;
+const login_API_URL = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiToken}`;
 const password_changeURL =
-  "https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyDXRw24BKeEkxL9zJEQpbfeieVBI5S4yO4";
+  'https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyDXRw24BKeEkxL9zJEQpbfeieVBI5S4yO4';
 
 // Register user
 const register = async (userData) => {
   const response = await axios.post(register_API_URL, userData);
 
   if (response.data) {
-    localStorage.setItem("user", JSON.stringify(response.data.idToken));
+    localStorage.setItem('user', JSON.stringify(response.data.idToken));
   }
 
   return response.data;
@@ -21,10 +21,10 @@ const login = async (userData) => {
   const response = await axios.post(login_API_URL, userData);
 
   if (response.data) {
-    localStorage.setItem("user", JSON.stringify(response.data.idToken));
+    localStorage.setItem('user', JSON.stringify(response.data.idToken));
   }
 
-  return response.data;
+  return response.data.idToken;
 };
 const passwordChange = async (userData) => {
   const response = await axios.post(password_changeURL, userData);
@@ -34,7 +34,7 @@ const passwordChange = async (userData) => {
 
 // Logout user
 const logout = () => {
-  localStorage.removeItem("user");
+  localStorage.removeItem('user');
 };
 
 const authService = {

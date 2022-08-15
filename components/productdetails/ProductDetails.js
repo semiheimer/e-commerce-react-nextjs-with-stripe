@@ -1,16 +1,15 @@
-import { Rating } from "@mui/material";
-import { useState } from "react";
-import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
-import Product from "./Product";
-import { useSelector, useDispatch } from "react-redux";
-import { cartActions } from "../../store/cart/cart-slice";
-function ProductDetails({ loadedProduct, products }) {
+import { Rating } from '@mui/material';
+import { useState } from 'react';
+import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
+import Product from './Product';
+import { useSelector, useDispatch } from 'react-redux';
+import { cartActions } from '../../store/cart/cart-slice';
+import Image from 'next/image';
+function ProductDetails({ product, products }) {
   const [index, setIndex] = useState(0);
   const [inputValue, setInputValue] = useState(1);
   const dispatch = useDispatch();
-  const { title, price, description, rating, images, brand, id } =
-    loadedProduct;
-
+  const { title, price, description, rating, images, brand, id } = product;
   const addToCartHandler = () => {
     if (inputValue > 0)
       dispatch(
@@ -29,15 +28,22 @@ function ProductDetails({ loadedProduct, products }) {
       <div className='product-detail-container'>
         <div>
           <div className='image-container'>
-            <img src={images[index]} className='product-detail-image' />
+            <Image
+              src={images[index]}
+              className='product-detail-image'
+              width='400px'
+              height='400px'
+            />
           </div>
           <div className='small-images-container'>
             {images?.map((item, i) => (
-              <img
+              <Image
+                width='70px'
+                height='70px'
                 key={i}
                 src={item}
                 className={
-                  i === index ? "small-image selected-image" : "small-image"
+                  i === index ? 'small-image selected-image' : 'small-image'
                 }
                 onMouseEnter={() => setIndex(i)}
               />
@@ -51,7 +57,7 @@ function ProductDetails({ loadedProduct, products }) {
             <Rating
               className=''
               name='half-rating-read'
-              defaultValue={rating}
+              value={rating}
               precision={0.5}
               readOnly
               size='large'

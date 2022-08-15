@@ -1,7 +1,7 @@
-import HeroBanner from "../components/HeroBanner";
-import React from "react";
-import BestSellerProducts from "../components/BestSellerProducts";
-import HighDrawProducts from "../components/HighDrawProducts";
+import HeroBanner from '../components/HeroBanner';
+import React from 'react';
+import BestSellerProducts from '../components/BestSellerProducts';
+import HighDrawProducts from '../components/HighDrawProducts';
 
 function Home({ loadedProducts }) {
   return (
@@ -33,7 +33,7 @@ function Home({ loadedProducts }) {
 
 export default Home;
 export const getServerSideProps = async () => {
-  const response = await fetch("https://dummyjson.com/products?limit=25");
+  const response = await fetch('https://dummyjson.com/products?limit=25');
 
   const productsData = await response.json();
   const loadedProducts = [];

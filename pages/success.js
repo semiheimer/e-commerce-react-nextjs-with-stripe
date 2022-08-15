@@ -12,7 +12,7 @@ const Success = () => {
     localStorage.clear();
     dispatch(cartActions.resetCart());
     //runFireworks();
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className='success-wrapper'>

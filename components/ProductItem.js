@@ -1,8 +1,8 @@
-import classes from "./ProductItem.module.css";
-import { Rating } from "@mui/material";
-import Link from "next/link";
-import { useDispatch } from "react-redux";
-import { cartActions } from "../store/cart/cart-slice";
+import classes from './ProductItem.module.css';
+import { Rating } from '@mui/material';
+import Link from 'next/link';
+import { useDispatch } from 'react-redux';
+import { cartActions } from '../store/cart/cart-slice';
 const ProductItem = (props) => {
   const dispatch = useDispatch();
   const price = `$${props.price.toFixed(2)}`;

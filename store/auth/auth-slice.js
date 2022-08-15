@@ -1,23 +1,28 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import authService from "./auth-service";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import authService from './auth-service';
 
 // Get user from localStorage
 const user =
-  typeof window !== "undefined"
-    ? JSON.parse(localStorage.getItem("user"))
+  typeof window !== 'undefined'
+    ? JSON.parse(localStorage.getItem('user'))
     : null;
+// const getLocalStorageUser = () => {
+//   let storedUser;
+//   if (typeof window === 'object') storedUser = localStorage.getItem('user');
+//   return storedUser ? storedUser : null;
+// };
 
 const initialAuthState = {
-  user: user ? user : null,
+  user: user,
   isError: false,
   isSuccess: false,
   isLoading: false,
-  message: "",
+  message: '',
 };
 
 // Register user
 export const register = createAsyncThunk(
-  "auth/register",
+  'auth/register',
   async (user, thunkAPI) => {
     try {
       const data = await authService.register(user);
@@ -34,7 +39,7 @@ export const register = createAsyncThunk(
   }
 );
 export const passwordChange = createAsyncThunk(
-  "auth/passwordchange",
+  'auth/passwordchange',
   async (user, thunkAPI) => {
     try {
       return await authService.passwordChange(user);
@@ -51,32 +56,37 @@ export const passwordChange = createAsyncThunk(
 );
 
 // Login user
-export const login = createAsyncThunk("auth/login", async (user, thunkAPI) => {
-  try {
-    const data = await authService.login(user);
-    return data;
-  } catch (error) {
-    const message =
-      (error.response && error.response.data && error.response.data.message) ||
-      error.message ||
-      error.toString();
-    return thunkAPI.rejectWithValue(message);
+export const login = createAsyncThunk(
+  'auth/login',
+  async (userData, thunkAPI) => {
+    try {
+      const data = await authService.login(userData);
+      return data;
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
   }
-});
+);
 
-export const logout = createAsyncThunk("auth/logout", async () => {
+export const logout = createAsyncThunk('auth/logout', async () => {
   await authService.logout();
 });
 
 export const authSlice = createSlice({
-  name: "auth",
+  name: 'auth',
   initialState: initialAuthState,
   reducers: {
     reset: (state) => {
       state.isLoading = false;
       state.isSuccess = false;
       state.isError = false;
-      state.message = "";
+      state.message = '';
       state.user = null;
     },
   },
@@ -128,5 +138,5 @@ export const authSlice = createSlice({
   },
 });
 
-export const { reset } = authSlice.actions;
+export const { reset, retrieveStoredToken } = authSlice.actions;
 export default authSlice.reducer;

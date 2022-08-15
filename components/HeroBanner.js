@@ -1,13 +1,5 @@
-import React from "react";
-import Link from "next/link";
-
-const Banner = () => {
-  return (
-    <div>
-      <Image src={a} />
-    </div>
-  );
-};
+import React from 'react';
+import Link from 'next/link';
 
 function HeroBanner({ heroProduct }) {
   return (
