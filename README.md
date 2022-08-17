@@ -1,4 +1,4 @@
-Open [https://vercel.com/semiheimer/e-commerce-react-next-stripe](https://vercel.com/semiheimer/e-commerce-react-next-stripe) with your browser to see the live site.
+Open [https://e-commerce-react-next-stripe.vercel.app](https://e-commerce-react-next-stripe.vercel.app) with your browser to see the live site.
 ![alt mainpage](public/mainpage_.png)
 ![alt productdetail](public/pdetail-2.png)
 
