@@ -5,7 +5,7 @@ import NavbarCartButton from './NavbarCartButton';
 import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import { logout, reset } from '../../store/auth/auth-slice';
-// import dynamic from 'next/dynamic';
+import dynamic from 'next/dynamic';
 
 // const Dynamic = dynamic(() => import('./Dynamic'), {
 //   ssr: false,
@@ -54,4 +54,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default dynamic(() => Promise.resolve(Navbar), { ssr: false });

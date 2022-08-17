@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-const ProtectedRoute = () => {
+const ProtectedRoute = ({ children }) => {
   const { user } = useSelector((state) => state.auth);
   const router = useRouter();
   useEffect(() => {
