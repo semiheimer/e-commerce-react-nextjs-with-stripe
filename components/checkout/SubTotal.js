@@ -39,9 +39,11 @@ function SubTotal() {
           as a Gift
         </small>
       </p>
-      <button type='button' onClick={handleCheckout}>
-        Proceed to Checkout
-      </button>
+      {items.length < 1 ? null : (
+        <button type='button' onClick={handleCheckout}>
+          Proceed to Checkout
+        </button>
+      )}
     </div>
   );
 }
