@@ -189,9 +189,24 @@ a {
   align-self: flex-end;
 }
 @media screen and (max-width: 980px) {
+  .hero-banner-container {
+    padding: 20px 20px;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 20px;
+  }
+  .hero_column2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   .hero_column2 img {
-    width: 350px;
-    height: 350px;
+    top: 0%;
+    right: 0%;
+    padding: 0px;
+    position: relative;
+    width: 200px;
+    height: 250px;
   }
   .hero-banner-container h1 {
     font-size: 7em;

@@ -13,6 +13,10 @@ function HeroBanner({ heroProduct }) {
             Shop Now
           </button>
         </Link>
+        <div className='desc1'>
+          <h5>{heroProduct.description}</h5>
+          <p>{heroProduct.brand}</p>
+        </div>
       </div>
       <div className='hero_column2'>
         <img
@@ -20,10 +24,6 @@ function HeroBanner({ heroProduct }) {
           alt='headphones'
           className='hero-banner-image'
         />
-        <div className='desc1'>
-          <h5>{heroProduct.description}</h5>
-          <p>{heroProduct.brand}</p>
-        </div>
       </div>
     </div>
   );
