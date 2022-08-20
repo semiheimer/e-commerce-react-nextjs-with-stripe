@@ -1,5 +1,5 @@
 Open [https://e-commerce-react-next-stripe.vercel.app](https://e-commerce-react-next-stripe.vercel.app) with your browser to see the live site.
-Test Credit Card Number 4242 4242 4242
+Stripe Test Credit Card Number 4242 4242 4242
 ![alt mainpage](public/mainpage_.png)
 ![alt productdetail](public/pdetail-2.png)
 
